@@ -1,0 +1,19 @@
+﻿@model List<User>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+<a class="btn btn-primary" asp-action="LogOut">Çıkış</a>
+<a class="btn btn-primary" asp-action="GetRefreshToken">Refresh Token yenile</a>
+
+<br />
+@foreach (var user in Model)
+{
+    <ul>
+        <li>@user.Name</li>
+        <li>@user.Surname</li>
+        <li>@user.RoleName</li>
+        <br />
+    </ul>
+}

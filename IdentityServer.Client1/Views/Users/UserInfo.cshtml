@@ -1,0 +1,42 @@
+﻿@using Microsoft.AspNetCore.Authentication;
+@{
+    ViewData["Title"] = "UserInfo";
+}
+
+<h1>UserInfo</h1>
+<a class="btn btn-primary" asp-action="LogOut">Çıkış</a>
+<br />
+
+<table class="table table-bordered">
+    <thead>
+        <tr>Claim Type</tr>
+        <tr>Claim Value</tr>
+    </thead>
+    <tbody>
+        @foreach (var item in User.Claims)
+        {
+            <tr>
+                <td>@item.Type</td>
+                <td>@item.Value</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h4>Authentication verileri</h4>
+<table class="table table-bordered">
+    <thead>
+        <tr>Auth property key</tr>
+        <tr>Auth property value</tr>
+    </thead>
+    <tbody>
+        @foreach (var item in (await Context.AuthenticateAsync()).Properties.Items)
+        {
+            <tr>
+                <td>@item.Key</td>
+                <td>@item.Value</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
